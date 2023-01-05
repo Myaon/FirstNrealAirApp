@@ -1,16 +1,19 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour {
-    
+
+    public Text location;
+
     [SerializeField] private string m_DeviceName;
     private AudioClip m_AudioClip;
     private int m_LastAudioPos;
     private float m_AudioLevel;
 
     [SerializeField] private GameObject m_Cube;
-    [SerializeField, Range(10, 100)] private float m_AmpGain = 10;
+    [SerializeField, Range(10, 1000)] private float m_AmpGain = 10;
     
     void Start() {
         string targetDevice = "";
@@ -19,6 +22,7 @@ public class Controller : MonoBehaviour {
             Debug.Log($"Device Name: {device}");
             if (device.Contains(m_DeviceName)) {
                 targetDevice = device;
+                //location.text = device;
             }
         }
         
